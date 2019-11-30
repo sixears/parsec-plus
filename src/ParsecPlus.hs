@@ -4,7 +4,7 @@
 
 {- | Add simple file-handling on top of Base Parsecable class -}
 module ParsecPlus
-  ( AsParseError(..), IOParseError, Parsecable(..)
+  ( AsParseError(..), IOParseError, Parsecable(..), ParseError
   , digits, parens, parsecFileUTF8, __parsecN__ )
 where
 
@@ -38,7 +38,7 @@ import Control.Monad.Except  ( MonadError )
 
 import ParsecPlusBase
 
-import Parsec.Error  ( AsParseError( _ParseError ), IOParseError )
+import Parsec.Error  ( AsParseError( _ParseError ), IOParseError, ParseError )
 
 --------------------------------------------------------------------------------
 
