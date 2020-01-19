@@ -7,7 +7,7 @@ name:                parsec-plus
 -- PVP summary:      +-+------- breaking API changes
 --                   | | +----- non-breaking API additions
 --                   | | | +--- code changes with no API change
-version:             1.0.1.0
+version:             1.0.2.0
 
 -- A short (one-line) description of the package.
 synopsis:            Parsecable class, with file-reading functions
@@ -47,6 +47,7 @@ library
   ghc-options:         -W -Wall -fhelpful-errors
   -- Modules exported by the library.
   exposed-modules:     ParsecPlus
+                       Parsec.FPathParseError
 
   -- modules included in this library but not exported.
   other-modules:   
@@ -56,10 +57,12 @@ library
   other-extensions:
 
   -- Other library packages from which modules are imported.
-  build-depends:       base, mtl
+  build-depends:       base, base-unicode-symbols, data-textual, lens, mtl
 
-                     , fpath >= 1.0.1.0, monaderror-io >= 1.0.0.0
-                     , monadio-plus >= 1.0.0.0, more-unicode >= 0.0.9.0
+                     , fpath            >= 1.0.3.1
+                     , monaderror-io    >= 1.0.2.0
+                     , monadio-plus     >= 1.0.3.0
+                     , more-unicode     >= 0.0.9.0
                      , parsec-plus-base >= 1.0.0.0
 
   -- Directories containing source files.
