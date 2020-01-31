@@ -1,3 +1,7 @@
+1.0.4.0 2020-01-31
+==================
+- use getContentsUTF8Lenient to provide lenient parsing on stdin, too (bugfix)
+
 1.0.3.0 2020-01-28
 ==================
 - add parsecFileUTF8Lenient, parsecFUTF8L
