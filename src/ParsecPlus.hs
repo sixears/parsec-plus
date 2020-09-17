@@ -1,12 +1,13 @@
-{-# LANGUAGE FlexibleContexts #-}
-{-# LANGUAGE RankNTypes       #-}
-{-# LANGUAGE UnicodeSyntax    #-}
+{-# LANGUAGE FlexibleContexts  #-}
+{-# LANGUAGE NoImplicitPrelude #-}
+{-# LANGUAGE RankNTypes        #-}
+{-# LANGUAGE UnicodeSyntax     #-}
 
 {- | Add simple file-handling on top of Base Parsecable class -}
 module ParsecPlus
-  ( AsParseError(..), IOParseError, Parsecable(..), ParseError
-  , digits, parens, parsecFUTF8, parsecFUTF8L, parsecFileUTF8L, parsecFileUTF8
-  , __parsecN__
+  ( AsParseError(..), Parsecable(..), ParseError
+  , parsecFUTF8, parsecFUTF8L, parsecFileUTF8L, parsecFileUTF8
+  , module ParsecPlusBase
   )
 where
 
@@ -42,8 +43,7 @@ import Control.Monad.Except  ( MonadError )
 -- parsec-plus-base --------------------
 
 import ParsecPlusBase
-
-import Parsec.Error  ( AsParseError( _ParseError ), IOParseError, ParseError )
+import Parsec.Error  ( ParseError )
 
 --------------------------------------------------------------------------------
 

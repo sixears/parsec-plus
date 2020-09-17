@@ -1,4 +1,8 @@
-1.0.4.0 2020-01-31
+1.0.3.2 2020-09-17
+==================
+- directly export ParsecPlusBase
+
+1.0.3.1 2020-01-31
 ==================
 - use getContentsUTF8Lenient to provide lenient parsing on stdin, too (bugfix)
 
