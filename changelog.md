@@ -1,3 +1,7 @@
+1.1.0.0 2021-02-20
+==================
+- use MonadIO-Plus 1.1.0.0; remove parsecFUTF8{,L}
+
 1.0.3.2 2020-09-17
 ==================
 - directly export ParsecPlusBase
