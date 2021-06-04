@@ -1,9 +1,3 @@
-{-# LANGUAGE FlexibleContexts  #-}
-{-# LANGUAGE NoImplicitPrelude #-}
-{-# LANGUAGE RankNTypes        #-}
-{-# LANGUAGE UnicodeSyntax     #-}
-{-# LANGUAGE ViewPatterns      #-}
-
 {- | Add simple file-handling on top of Base Parsecable class -}
 module ParsecPlus
   ( AsParseError(..), Parsecable(..), ParseError
@@ -28,12 +22,13 @@ import MonadError.IO.Error  ( AsIOError )
 -- monadio-plus ------------------------
 
 import MonadIO       ( MonadIO )
-import MonadIO.File  ( readFileUTF8, readFileUTF8Lenient )
+import MonadIO.File  ( readFile, readFileUTF8Lenient )
 
 -- more-unicode ------------------------
 
 import Data.MoreUnicode.Lens   ( (⫥) )
 import Data.MoreUnicode.Monad  ( (≫) )
+import Data.MoreUnicode.Text   ( 𝕋 )
 
 -- mtl ---------------------------------
 
@@ -47,17 +42,19 @@ import Parsec.Error  ( ParseError )
 --------------------------------------------------------------------------------
 
 {- | Parse a file whose contents are UTF8-encoded text. -}
-parsecFileUTF8 ∷ ∀ χ ε μ γ . (MonadIO μ, Parsecable χ, FileAs γ,
-                            AsIOError ε, AsParseError ε, MonadError ε μ) ⇒
+parsecFileUTF8 ∷ ∀ χ ε μ γ .
+                 (MonadIO μ, Parsecable χ, FileAs γ,
+                  AsIOError ε, AsParseError ε, MonadError ε μ) ⇒
                  γ → μ χ
-parsecFileUTF8 (review _File_ → fn) = readFileUTF8 fn ≫ parsec (fn ⫥ filepath)
+parsecFileUTF8 (review _File_ → fn) =
+  readFile @_ @𝕋 fn ≫ parsec (fn ⫥ filepath)
 
 ----------------------------------------
 
 {- | Parse a file whose contents are UTF8-encoded text; with lenient decoding
      (see `readFileUTF8Lenient`. -}
 parsecFileUTF8L ∷ ∀ χ ε μ γ . (MonadIO μ, Parsecable χ, FileAs γ,
-                            AsIOError ε, AsParseError ε, MonadError ε μ) ⇒
+                               AsIOError ε, AsParseError ε, MonadError ε μ) ⇒
                   γ → μ χ
 parsecFileUTF8L (review _File_ → fn) =
   readFileUTF8Lenient fn ≫ parsec (fn ⫥ filepath)

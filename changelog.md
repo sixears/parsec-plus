@@ -1,3 +1,7 @@
+1.1.0.1 2021-06-02
+==================
+- use MonadIO-Plus 1.4.6.0 (readFile @_ @T rather than readFileUTF8)
+
 1.1.0.0 2021-02-20
 ==================
 - use MonadIO-Plus 1.1.0.0; remove parsecFUTF8{,L}
