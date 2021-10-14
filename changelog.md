@@ -1,3 +1,7 @@
+1.1.0.2 2021-10-12
+==================
+- upgrade dependencies, including monadio-plus to 2.0.0.0
+
 1.1.0.1 2021-06-02
 ==================
 - use MonadIO-Plus 1.4.6.0 (readFile @_ @T rather than readFileUTF8)
