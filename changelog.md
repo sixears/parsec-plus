@@ -1,3 +1,7 @@
+1.1.0.3 2021-12-29
+==================
+- parsecFileUTF8* implicitly includes eof
+
 1.1.0.2 2021-10-12
 ==================
 - upgrade dependencies, including monadio-plus to 2.0.0.0

@@ -26,13 +26,16 @@ import MonadIO.File  ( readFile, readFileUTF8Lenient )
 
 -- more-unicode ------------------------
 
-import Data.MoreUnicode.Lens   ( (⫥) )
-import Data.MoreUnicode.Monad  ( (≫) )
-import Data.MoreUnicode.Text   ( 𝕋 )
+import Data.MoreUnicode.Applicative  ( (⋪) )
+import Data.MoreUnicode.Lens         ( (⫥) )
+import Data.MoreUnicode.Monad        ( (≫) )
+import Data.MoreUnicode.Text         ( 𝕋 )
 
 -- mtl ---------------------------------
 
 import Control.Monad.Except  ( MonadError )
+
+import Text.Parsec.Combinator  ( eof )
 
 -- parsec-plus-base --------------------
 
@@ -47,7 +50,7 @@ parsecFileUTF8 ∷ ∀ χ ε μ γ .
                   AsIOError ε, AsParseError ε, MonadError ε μ) ⇒
                  γ → μ χ
 parsecFileUTF8 (review _File_ → fn) =
-  readFile @_ @𝕋 fn ≫ parsec (fn ⫥ filepath)
+  readFile @_ @𝕋 fn ≫ parse (parser ⋪ eof) (fn ⫥ filepath)
 
 ----------------------------------------
 
@@ -57,6 +60,6 @@ parsecFileUTF8L ∷ ∀ χ ε μ γ . (MonadIO μ, Parsecable χ, FileAs γ,
                                AsIOError ε, AsParseError ε, MonadError ε μ) ⇒
                   γ → μ χ
 parsecFileUTF8L (review _File_ → fn) =
-  readFileUTF8Lenient fn ≫ parsec (fn ⫥ filepath)
+  readFileUTF8Lenient fn ≫ parse (parser ⋪ eof) (fn ⫥ filepath)
 
 -- that's all, folks! ----------------------------------------------------------
