@@ -1,3 +1,7 @@
+1.1.1.0 2021-12-30
+==================
+- add testParsecFile
+
 1.1.0.3 2021-12-29
 ==================
 - parsecFileUTF8* implicitly includes eof

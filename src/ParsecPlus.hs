@@ -1,39 +1,24 @@
 {- | Add simple file-handling on top of Base Parsecable class -}
 module ParsecPlus
   ( AsParseError(..), Parsecable(..), ParseError
-  , parsecFileUTF8L, parsecFileUTF8
+  , parsecFileUTF8L, parsecFileUTF8, testParsecFile
   , module ParsecPlusBase
   )
 where
+
+import Base1T
 
 -- fpath -------------------------------
 
 import FPath.AsFilePath  ( filepath )
 import FPath.File        ( FileAs( _File_ ) )
 
--- lens --------------------------------
-
-import Control.Lens.Review  ( review )
-
--- monaderror-io -----------------------
-
-import MonadError.IO.Error  ( AsIOError )
-
 -- monadio-plus ------------------------
 
-import MonadIO       ( MonadIO )
 import MonadIO.File  ( readFile, readFileUTF8Lenient )
-
--- more-unicode ------------------------
-
-import Data.MoreUnicode.Applicative  ( (⋪) )
-import Data.MoreUnicode.Lens         ( (⫥) )
-import Data.MoreUnicode.Monad        ( (≫) )
-import Data.MoreUnicode.Text         ( 𝕋 )
+import MonadIO.Temp  ( testsWithTempfile )
 
 -- mtl ---------------------------------
-
-import Control.Monad.Except  ( MonadError )
 
 import Text.Parsec.Combinator  ( eof )
 
@@ -61,5 +46,12 @@ parsecFileUTF8L ∷ ∀ χ ε μ γ . (MonadIO μ, Parsecable χ, FileAs γ,
                   γ → μ χ
 parsecFileUTF8L (review _File_ → fn) =
   readFileUTF8Lenient fn ≫ parse (parser ⋪ eof) (fn ⫥ filepath)
+
+{-| test that `parsecFileUTF8` on a file (of given text) gives expected result -}
+testParsecFile ∷ (Eq α, Parsecable α, Show α) ⇒ 𝕋 → α → TestTree
+testParsecFile txt exp =
+  let prs fn = ѥ @IOParseError $ parsecFileUTF8 fn
+      check xp fn = prs fn ≫ \ x → assertRight (xp @=?) x
+   in testsWithTempfile txt [("parsecFileUTF8", check exp )]
 
 -- that's all, folks! ----------------------------------------------------------
