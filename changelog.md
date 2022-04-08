@@ -1,3 +1,19 @@
+1.1.1.4 2022-04-07
+==================
+- increment monadio-plus to 2.3.0.1
+
+1.1.1.3 2022-04-06
+==================
+- increment monadio-plus to 2.3.0.0
+
+1.1.1.2 2022-04-05
+==================
+- increment monadio-plus to 2.2.0.0
+
+1.1.1.1 2022-04-04
+==================
+- increment monadio-plus to 2.1.0.0
+
 1.1.1.0 2021-12-30
 ==================
 - add testParsecFile
