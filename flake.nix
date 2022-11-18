@@ -5,10 +5,10 @@
     nixpkgs.url      = "github:nixos/nixpkgs/be44bf67"; # nixos-22.05 2022-10-15
     build-utils.url  = "github:sixears/flake-build-utils/r1.0.0.12";
 
-    base1t.url           = github:sixears/base1t/r0.0.5.25;
-    fpath.url            = github:sixears/fpath/r1.3.2.24;
+    base1t.url           = github:sixears/base1t/r0.0.5.26;
+    fpath.url            = github:sixears/fpath/r1.3.2.25;
     monaderror-io.url    = github:sixears/monaderror-io/r1.2.5.14;
-    monadio-plus.url     = github:sixears/monadio-plus/r2.5.1.28;
+    monadio-plus.url     = github:sixears/monadio-plus/r2.5.1.29;
     parsec-plus-base.url = github:sixears/parsec-plus-base/r1.0.5.16;
   };
 
