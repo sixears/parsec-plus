@@ -7,7 +7,7 @@ name:                parsec-plus
 -- PVP summary:      +-+------- breaking API changes
 --                   | | +----- non-breaking API additions
 --                   | | | +--- code changes with no API change
-version:             1.1.1.16
+version:             1.1.1.17
 
 -- A short (one-line) description of the package.
 synopsis:            Parsecable class, with file-reading functions
