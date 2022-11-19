@@ -3,13 +3,13 @@
 
   inputs = {
     nixpkgs.url      = "github:nixos/nixpkgs/be44bf67"; # nixos-22.05 2022-10-15
-    build-utils.url  = "github:sixears/flake-build-utils/r1.0.0.12";
+    build-utils.url  = github:sixears/flake-build-utils/r1.0.0.13;
 
-    base1t.url           = github:sixears/base1t/r0.0.5.27;
-    fpath.url            = github:sixears/fpath/r1.3.2.26;
-    monaderror-io.url    = github:sixears/monaderror-io/r1.2.5.14;
-    monadio-plus.url     = github:sixears/monadio-plus/r2.5.1.30;
-    parsec-plus-base.url = github:sixears/parsec-plus-base/r1.0.5.16;
+    base1t.url           = github:sixears/base1t/r0.0.5.28;
+    fpath.url            = github:sixears/fpath/r1.3.2.27;
+    monaderror-io.url    = github:sixears/monaderror-io/r1.2.5.15;
+    monadio-plus.url     = github:sixears/monadio-plus/r2.5.1.31;
+    parsec-plus-base.url = github:sixears/parsec-plus-base/r1.0.5.17;
   };
 
   outputs = { self, nixpkgs, build-utils
