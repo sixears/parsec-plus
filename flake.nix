@@ -15,9 +15,23 @@
   outputs = { self, nixpkgs, build-utils
             , base1t, fpath, monaderror-io, monadio-plus, parsec-plus-base }:
     build-utils.lib.hOutputs self nixpkgs "parsec-plus" {
-      deps = {
-        inherit base1t fpath monaderror-io monadio-plus parsec-plus-base;
-      };
       ghc = p: p.ghc8107; # for tfmt
+      callPackage = { mkDerivation, lib, mapPkg, system
+                    , base, base-unicode-symbols, data-textual, lens, mtl
+                    , parsec }:
+        mkDerivation {
+          pname = "parsec-plus";
+          version = "1.1.1.32";
+          src = ./.;
+          libraryHaskellDepends = [
+            base base-unicode-symbols data-textual lens mtl parsec
+          ] ++ mapPkg [
+            base1t fpath monaderror-io monadio-plus parsec-plus-base
+          ];
+          testHaskellDepends = [ base ];
+          description = "Parsecable class, with file-reading functions";
+          license = lib.licenses.mit;
+        };
+
     };
 }
