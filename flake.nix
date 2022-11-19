@@ -6,9 +6,9 @@
     build-utils.url  = github:sixears/flake-build-utils/r1.0.0.13;
 
     base1t.url           = github:sixears/base1t/r0.0.5.33;
-    fpath.url            = github:sixears/fpath/r1.3.2.34;
+    fpath.url            = github:sixears/fpath/r1.3.2.35;
     monaderror-io.url    = github:sixears/monaderror-io/r1.2.5.18;
-    monadio-plus.url     = github:sixears/monadio-plus/r2.5.1.42;
+    monadio-plus.url     = github:sixears/monadio-plus/r2.5.1.43;
     parsec-plus-base.url = github:sixears/parsec-plus-base/r1.0.5.21;
   };
 
