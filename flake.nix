@@ -21,7 +21,7 @@
                     , parsec }:
         mkDerivation {
           pname = "parsec-plus";
-          version = "1.1.1.39"
+          version = "1.1.1.41";
           src = ./.;
           libraryHaskellDepends = [
             base base-unicode-symbols data-textual lens mtl parsec
